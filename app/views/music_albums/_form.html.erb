@@ -1,0 +1,45 @@
+<%= form_with  model: musicalbum do |form| %>
+  <% if musicalbum.errors.full_messages.any? %>
+    <% musicalbum.errors.full_messages.each do |error_message| %>
+      <%= error_message if musicalbum.errors.full_messages.first == error_message %>
+      <br/>
+    <% end %>
+  <% end %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, class:'form-control',placeholder:"Enter Album Name" %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :cover_image %>
+    <%= form.file_field :cover_image,class:'form-control' %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description, class:'form-control',placeholder:"Description about singer" %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :music_file %>
+    <%= form.file_field :file,class:'form-control' %>
+  </div>
+  <br/>
+  <br/>
+  <div>
+    <%= form.label :price %>
+    <%= form.text_field :price, class:'form-control',placeholder:"Price of an Album" %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :publish %>
+    <%= form.check_box :publish %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :tag %>
+    <%= form.text_area :all_tags, class:'form-control mb-3',placeholder:"Tag for search album" %>
+  </div>
+  <div ><%= form.submit  %></div>
+<% end %>
+<br/>

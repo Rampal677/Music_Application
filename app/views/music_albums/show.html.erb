@@ -1,0 +1,113 @@
+<div class="container">
+  <h1>Album :
+    <%= @musicalbum.name %></h1>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <% if @musicalbum.cover_image.attached? %>
+          <%= image_tag(@musicalbum.cover_image,class: "card-top-img img-fluid") %>
+        <% end %>
+      </div>
+      <div class="card-footer">
+        <span>
+          <strong>Title:</strong>
+          <%= @musicalbum.name %>
+        </span>
+        <span class="pl">
+          <strong>Description:</strong>
+          <%= @musicalbum.description %>
+        </span>
+      </div>
+      <div class="card-footer">
+        <span>
+          <strong>Price:</strong>
+          <%= @musicalbum.price %>
+        </span>
+      </div>
+      <div class="card-footer text-center">
+        <% if @musicalbum.file.attached? %>
+          <audio controls>
+            <source
+              src="<%= rails_blob_url (@musicalbum.file) %>"
+              type="<%=@musicalbum.file.content_type%>"
+            />
+          </audio>
+
+
+
+    <div class="container-audio">
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+    </div>   
+        <% end %>
+      </div>
+            </div>
+          </div>
+        </div>

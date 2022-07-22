@@ -1,0 +1,110 @@
+<div class="container">
+  <form class="d-flex ms-auto mt-2">
+    <%= search_form_for @q, url: root_path do |f| %>
+      <%= f.search_field :tags_name_or_name_eq , placeholder: "Search By Tag or Name" %>
+      <%= f.submit "Search", class:"btn btn-primary" %>
+    <% end %>
+  </form>
+  <h1>Published Music Album
+  </h1>
+  <div class="row">
+    <% @publish.each do |album| %>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <%= button_to music_album_path(album),class:"buttonto",method: :delete, data: { confirm: "Are you sure to delete this album?" } do %>
+              <i class="fas fa-times right"></i>
+            <% end %>
+            <%= link_to edit_music_album_path(album)do %>
+              <i class="fas fa-edit green"></i>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <% if album.cover_image.attached? %>
+              <%= link_to album do %>
+                <%= image_tag(album.cover_image,class: "card-top-img img-fluid") %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <span>
+              <strong>Name:</strong>
+              <%= album.name %>
+              <br>
+            </span>
+            <span class="pl">
+              <strong>Description:</strong>
+              <%= album.description %>
+            </span>
+          </div>
+          <div class="card-footer">
+            <span>
+              <strong>Price:</strong>
+              <%= album.price %>
+            </span>
+          </div>
+          <div class="card-footer">
+            <span>
+              <strong>Tag:</strong>
+              <%= album.all_tags %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <h1 class="mt-5">Unpublished Music Album
+  </h1>
+  <div class="row">
+    <% @unpublish.each do |album| %>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <%= button_to music_album_path(album),class:"buttonto",method: :delete, data: { confirm: "Are you sure to delete this album?" } do %>
+              <i class="fas fa-times right"></i>
+            <% end %>
+            <%= link_to edit_music_album_path(album)do %>
+              <i class="fas fa-edit green"></i>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <% if album.cover_image.attached? %>
+              <%= link_to album do %>
+                <%= image_tag(album.cover_image,class: "card-top-img img-fluid") %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <span>
+              <strong>Name:</strong>
+              <%= album.name %>
+            </span>
+            <span class="pl">
+              <strong>Description:</strong>
+              <%= album.description %>
+            </span>
+          </div>
+          <div class="card-footer">
+            <span>
+              <strong>Price:</strong>
+              <%= album.price %>
+            </span>
+          </div>
+          <div class="card-footer">
+            <span>
+              <strong>Tag:</strong>
+              <%= album.all_tags %>
+            </span>
+          </div>
+        </div>
+        <%= form_with  model: album do |form| %>
+          <div class="mt-2">
+            <%= form.label :publish,class:"ms-3" %>
+            <%= form.check_box :publish %>
+          </div>
+          <div><%= form.submit "Publish" , class: "btn btn-danger ms-3 mb-5" %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

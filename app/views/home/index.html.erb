@@ -1,0 +1,51 @@
+<div class="container home">
+  <form class="d-flex ms-auto mt-2">
+    <%= search_form_for @q, url: root_path do |f|%>
+      <%= f.search_field :tags_name_or_name_eq , placeholder: "Search By Tag or Name"%>
+      <%= f.submit "Search", class:"btn btn-primary" %>
+    <% end %>
+  </form>
+  <h1 class="animate-charcter mt-4">Listen Now</h1>
+  <div class="row">
+    <% @publish.each do |album| %>
+      <% if album.publish == true%>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <%=album.name%>
+            </div>
+            <div class="card-body">
+              <% if album.cover_image.attached? %>
+                <%= link_to album do%>
+                  <%=image_tag(album.cover_image,class: "card-top-img img-fluid") %>
+                <%end%>
+              <%end%>
+            </div>
+            <div class="card-footer">
+              <span>
+                <strong>Name:</strong>
+                <%=album.name%>
+              </span>
+              <span class="pl">
+                <strong>Description:</strong>
+                <%=album.description%>
+              </span>
+            </div>
+            <div class="card-footer">
+              <span>
+                <strong>Price:</strong>
+                <%= album.price%>
+              </span>
+            </div>
+            <div class="card-footer">
+              <span>
+                <strong>Tag:</strong>
+                <%= album.all_tags%>
+              </span>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+</div>

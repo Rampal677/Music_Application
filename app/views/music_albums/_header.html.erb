@@ -1,0 +1,58 @@
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="fa fa-user user"></div>
+                <b class="user"><%= current_user.email %></b>
+              </a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Home", root_path, class: "nav-link text-danger fw-bolder text-decoration-none nav-tabs" %>
+            </li>
+          <% end %>
+        </ul>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Home",root_path,class:"text-light fw-bolder text-decoration-none "%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "New Album",new_music_album_path,class:"text-light fw-bolder text-decoration-none"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Album", music_albums_path,class:"text-light fw-bolder text-decoration-none"%>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <ul class=" nav navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item text-white">
+              <%= link_to edit_user_registration_path, class: "nav-link #{"active fw-bold" if current_page?(edit_user_registration_path)}" do %>
+                <div class="fa fa-cog"></div>
+                <b class="fw-bolder">Account settings</b>
+              <% end %>
+            </li>
+            <li class="nav-item"><%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white fw-bolder btn btn-danger button" %></li>
+          </ul>
+        <% else %>
+        </ul>
+        <ul class=" nav navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link text-white btn btn-danger me-2 button" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link text-white btn btn-primary me-3 button" %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
+</div>
